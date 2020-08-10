@@ -1,3 +1,5 @@
+# Python Tic Tac Toe created by Benedikt Lohse
+
 gameField = {
     'A': {
         '1': 0,
