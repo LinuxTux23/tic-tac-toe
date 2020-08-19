@@ -2,19 +2,19 @@
 
 gameField = {
     'A': {
-        '1': 0,
-        '2': 0,
-        '3': 0
+        '1': 'A1',
+        '2': 'A2',
+        '3': 'A3'
     },
     'B': {
-        '1': 0,
-        '2': 0,
-        '3': 0
+        '1': 'B1',
+        '2': 'B2',
+        '3': 'B3'
     },
     'C': {
-        '1': 0,
-        '2': 0,
-        '3': 0
+        '1': 'C1',
+        '2': 'C2',
+        '3': 'C3'
     },
 }
 
@@ -26,6 +26,24 @@ def printInstructions():
     print('[ B1 ] [ B2 ] [ B3 ]')
     print('[ C1 ] [ C2 ] [ C3 ]')
     print('---------------------')
+
+def printGameField():
+    print('Current Game Field Values:')
+    print('---------------------')
+
+    i = 0
+
+    while i > 3:
+        for row in gameField:
+            print('[ ' + str(gameField[str(row)][str(i)]) + ' ]'
+                  '[ ' + str(gameField[str(row)][str(i)]) + ' ]'
+                  '[ ' + str(gameField[str(row)][str(i)]) + ' ]')
+        i += 1
+
+    print('---------------------')
+
+
+
 
 
 def searchKeyInGameField(row, column):
@@ -51,17 +69,43 @@ def validateInput(answer):
     else:
         return False
 
+
+def insertInputToGrid(row, column, input):
+    gameField[row][column] = input
+
+
 printInstructions()
 
-print('Its Your turn !\n')
-answer = str(input('Address: '))
+#print('Its Your turn !\n')
+#answer = str(input('Address: '))
 
-if validateInput(answer):
-    print('OK')
-else:
-    print('Address not valid !')
+#if validateInput(answer):
+#    print('OK')
+#else:
+#    print('Address not valid !')
+
+#printGameField()
+
+print('Start')
+
+column = 1
+
+#while row <= 3:
+#    for column in gameField.keys():
+#        print('[ ' + str(gameField[str(column)][str(row)]) + ' ]')
+#    row += 1
 
 
+for row in gameField.keys():
+
+    while column <= 3:
+        print('[ ' + str(gameField[str(row)][str(column)]) + ' ]')
+        column += 1
+
+
+# Test Insert into Grind Function
+insertInputToGrid('A', '1', 'test')
+print(gameField['A']['1'])
 
 
 
