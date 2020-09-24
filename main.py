@@ -45,9 +45,6 @@ def printGameField():
     print('---------------------')
 
 
-
-
-
 def searchKeyInGameField(row, column):
     row = str(row)
     column = str(column)
