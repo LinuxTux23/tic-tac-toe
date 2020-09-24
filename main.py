@@ -1,22 +1,23 @@
 # Python Tic Tac Toe created by Benedikt Lohse
 
+import os
 import sys
 
 gameField = {
     'A': {
-        '1': 'A1',
-        '2': 'A2',
-        '3': 'A3'
+        '1': '',
+        '2': '',
+        '3': ''
     },
     'B': {
-        '1': 'B1',
-        '2': 'B2',
-        '3': 'B3'
+        '1': '',
+        '2': '',
+        '3': ''
     },
     'C': {
-        '1': 'C1',
-        '2': 'C2',
-        '3': 'C3'
+        '1': '',
+        '2': '',
+        '3': ''
     },
 }
 
@@ -33,14 +34,11 @@ def printGameField():
     print('Current Game Field Values:')
     print('---------------------')
 
-    i = 0
-
-    while i > 3:
-        for row in gameField:
-            print('[ ' + str(gameField[str(row)][str(i)]) + ' ]'
-                  '[ ' + str(gameField[str(row)][str(i)]) + ' ]'
-                  '[ ' + str(gameField[str(row)][str(i)]) + ' ]')
-        i += 1
+    for row in gameField:
+        rowSave = row
+        for col in gameField[rowSave]:
+            sys.stdout.write('[ ' + gameField[rowSave][col] + ' ]')
+        print('')
 
     print('---------------------')
 
@@ -73,25 +71,24 @@ def insertInputToGrid(row, column, input):
     gameField[row][column] = input
 
 
-# printInstructions()
+def userAddressInput():
+    print('Its Your turn !\n')
+    answer = str(input('Address: '))
 
-#print('Its Your turn !\n')
-#answer = str(input('Address: '))
+    if validateInput(answer):
+        print('OK')
+        insertInputToGrid(answer[0].capitalize(), answer[1], 'X')
+        os.system("cls")
+    else:
+        print('Address not valid !')
 
-#if validateInput(answer):
-#    print('OK')
-#else:
-#    print('Address not valid !')
-
-# printGameField()
+    printGameField()
 
 
-for row in gameField:
-    rowSave = row
-    for col in gameField[rowSave]:
-        sys.stdout.write('[ ' + gameField[rowSave][col] + ' ]')
-    print('')
+printInstructions()
 
-# Test Insert into Grind Function
-# insertInputToGrid('A', '1', 'test')
-# print(gameField['A']['1'])
+count = 0
+
+while count < 4:
+    userAddressInput()
+    count += 1
